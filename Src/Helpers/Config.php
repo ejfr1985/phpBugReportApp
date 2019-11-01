@@ -11,6 +11,8 @@ declare(strict_types = 1);
 namespace App\Helpers;
 
 
+use App\Exception\NotFoundException;
+
 class Config
 {
     public static function get(string $filename, string $key = null)
@@ -43,7 +45,7 @@ class Config
 
         } catch (\Throwable $exception) {
 
-            throw new \RuntimeException(
+            throw new NotFoundException(
                 sprintf('The file: %s is not found', $filename)
             );
 
