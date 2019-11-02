@@ -24,7 +24,7 @@ class App
 
     public function isDebugMode(): bool
     {
-        if(!isset($this->config['debug'])){
+        if (!isset($this->config['debug'])) {
 
             return false;
         }
@@ -34,17 +34,18 @@ class App
 
     public function getEnvironment(): string
     {
-        if(!isset($this->config['env'])){
+        if (!isset($this->config['env'])) {
 
             return 'production';
         }
 
-        return $this->config['env'];
+        return $this->isTestMode() ? 'test' : $this->config['env'];
     }
 
-    public function getLogPath(): string{
+    public function getLogPath(): string
+    {
 
-        if(!isset($this->config['log_path'])){
+        if (!isset($this->config['log_path'])) {
 
             throw new \Exception('Log path is not defined');
         }
@@ -62,6 +63,16 @@ class App
     public function getServerTime(): DateTimeInterface
     {
         return new DateTime('now', new DateTimeZone('America/Bogota'));
+    }
+
+    public function isTestMode(): bool
+    {
+
+        if ($this->isRunningFromConsole() && defined('PHPUNIT_RUNNING') && PHPUNIT_RUNNING == true) {
+            return true;
+        }
+
+        return false;
     }
 
 }
