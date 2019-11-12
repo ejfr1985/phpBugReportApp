@@ -7,5 +7,12 @@
  */
 
 return [
-
+    'pdo' => [
+        'driver' => 'mysql',
+        'host' => 'localhost',
+        'db_name' => 'general',
+        'db_username' => 'homestead',
+        'db_user_password' =>'secret',
+        'default_fetch' => PDO::FETCH_OBJ,
+    ]
 ];
