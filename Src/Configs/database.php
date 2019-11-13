@@ -14,5 +14,15 @@ return [
         'db_username' => 'homestead',
         'db_user_password' =>'secret',
         'default_fetch' => PDO::FETCH_OBJ,
-    ]
+    ],
+
+    'mysqli' => [
+        'host' => 'localhost',
+        'db_name' => 'general',
+        'db_username' => 'homestead',
+        'db_user_password' =>'secret',
+        'default_fetch' => MYSQLI_ASSOC,
+    ],
+
+
 ];
