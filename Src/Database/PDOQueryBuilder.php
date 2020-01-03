@@ -21,17 +21,17 @@ class PDOQueryBuilder extends QueryBuilder
 
     public function count()
     {
-       return $this->statement->rowCount();
+        return $this->statement->rowCount();
     }
 
     public function lastInsertedId()
     {
-        $this->connection->lastInsertId();
+        return $this->connection->lastInsertId();
     }
 
     public function prepare($query)
     {
-       $this->connection->prepare($query);
+        return $this->connection->prepare($query);
     }
 
     public function execute($statement)
@@ -44,6 +44,6 @@ class PDOQueryBuilder extends QueryBuilder
 
     public function fetchInto($className)
     {
-        $this->stament->fetchAll(PDO::FETCH_CLASS, $className);
+        return $this->stament->fetchAll(PDO::FETCH_CLASS, $className);
     }
 }
